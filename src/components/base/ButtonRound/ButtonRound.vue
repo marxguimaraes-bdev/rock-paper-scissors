@@ -25,9 +25,9 @@ const ariaLabel = computed(() => {
       'border-red-300 bg-red-200': variant === 'rock',
       'border-blue-300 bg-blue-200': variant === 'paper',
       'border-yellow-300 bg-yellow-200': variant === 'scissors',
-      'h-[8.125rem] w-[8.125rem] cursor-pointer border-b-[0.4375rem] sm:h-[12.375rem] sm:w-[12.125rem] sm:border-b-[0.5625rem]':
+      'h-[8.3125rem] w-[8.125rem] cursor-pointer border-b-[0.4375rem] sm:h-[12.375rem] sm:w-[12.125rem] sm:border-b-[0.5625rem]':
         size === 'small',
-      'h-[8.125rem] w-[8.125rem] border-b-[0.4375rem] sm:h-[286.7px] sm:w-[292.61px] sm:border-b-[13.3px]':
+      'h-[8.3125rem] w-[8.125rem] border-b-[0.4375rem] sm:h-[18.75rem] sm:w-[18.2881rem] sm:border-b-[0.8125rem]':
         size === 'large',
     }"
     @click="onClick"
@@ -41,7 +41,7 @@ const ariaLabel = computed(() => {
         'grid rounded-full border-gray-100 bg-linear-to-b from-gray-200 from-100% to-gray-200 to-0%': true,
         'h-[6.25rem] w-[6.25rem] border-t-[0.375rem] sm:h-[9.5rem] sm:w-[9.5rem] sm:border-t-[0.5rem]':
           size === 'small',
-        'h-[6.25rem] w-[6.25rem] border-t-[0.375rem] sm:h-[212.81px] sm:w-[224.63px] sm:border-t-[11.82px]':
+        'h-[6.25rem] w-[6.25rem] border-t-[0.375rem] sm:h-[14.0394rem] sm:w-[14.0394rem] sm:border-t-[0.75rem]':
           size === 'large',
       }"
     >
