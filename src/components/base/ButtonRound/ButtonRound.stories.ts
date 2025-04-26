@@ -37,3 +37,10 @@ export const Scissors = {
     variant: 'scissors',
   },
 };
+
+export const Large = {
+  args: {
+    variant: 'rock',
+    size: 'large',
+  },
+};
