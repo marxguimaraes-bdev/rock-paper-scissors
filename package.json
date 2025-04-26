@@ -12,7 +12,11 @@
     "vue": "^3.5.13"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "^4.1.4",
     "@vitejs/plugin-vue": "^5.2.2",
+    "autoprefixer": "latest",
+    "postcss": "latest",
+    "tailwindcss": "latest",
     "vite": "^6.3.1"
   }
 }
