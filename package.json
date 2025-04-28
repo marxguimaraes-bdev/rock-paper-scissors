@@ -7,18 +7,29 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "format:fix": "yarn exec prettier . --write"
+    "format": "yarn exec prettier . --write",
+    "storybook": "storybook dev -p 6006 --ci",
+    "build-storybook": "storybook build",
   },
   "dependencies": {
     "vue": "^3.5.13"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^3",
+    "@storybook/addon-essentials": "^8.6.12",
+    "@storybook/addon-interactions": "^8.6.12",
+    "@storybook/blocks": "^8.6.12",
+    "@storybook/test": "^8.6.12",
+    "@storybook/vue3": "^8.6.12",
+    "@storybook/vue3-vite": "^8.6.12",
     "@tailwindcss/vite": "^4.1.4",
     "@vitejs/plugin-vue": "^5.2.2",
     "autoprefixer": "latest",
     "postcss": "latest",
     "prettier": "3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
+    "storybook": "^8.6.12",
+    "storybook-dark-mode": "^4.0.2",
     "tailwindcss": "latest",
     "vite": "^6.3.1"
   }
