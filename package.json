@@ -10,6 +10,7 @@
     "format": "yarn exec prettier . --write",
     "storybook": "storybook dev -p 6006 --ci",
     "build-storybook": "storybook build",
+    "test": "vitest"
   },
   "dependencies": {
     "vue": "^3.5.13"
@@ -23,14 +24,20 @@
     "@storybook/vue3": "^8.6.12",
     "@storybook/vue3-vite": "^8.6.12",
     "@tailwindcss/vite": "^4.1.4",
+    "@types/vue": "^2.0.0",
     "@vitejs/plugin-vue": "^5.2.2",
+    "@vitest/browser": "latest",
+    "@vitest/coverage-v8": "latest",
+    "@vue/test-utils": "^2.4.6",
     "autoprefixer": "latest",
+    "jsdom": "^26.1.0",
     "postcss": "latest",
     "prettier": "3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "storybook": "^8.6.12",
     "storybook-dark-mode": "^4.0.2",
     "tailwindcss": "latest",
-    "vite": "^6.3.1"
+    "vite": "^6.3.1",
+    "vitest": "latest"
   }
 }
