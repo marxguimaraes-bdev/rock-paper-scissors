@@ -5,6 +5,20 @@
   --font-barlow: Barlow Semi Condensed, Helvetica, Arial, sans-serif;
   /* Blue */
   --color-blue-100: #3b4262;
+  --color-blue-200: #4664f4;
+  --color-blue-300: #2a45c2;
+
   /* Red */
   --color-red-100: #db2e4d;
+  --color-red-200: #db2e4d;
+  --color-red-300: #9d1634;
+
+  /* Yellow */
+  --color-yellow-200: #eb9f0e;
+  --color-yellow-300: #c76c1b;
+
+  /* Gray */
+  --color-gray-100: #babfd4;
+  --color-gray-200: #dadada;
+  --color-gray-300: #f3f3f3;
 }
