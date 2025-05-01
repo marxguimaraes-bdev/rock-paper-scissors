@@ -2,7 +2,7 @@
 const { label, onClick, disabled, variant, size } = defineProps<{
   label: string;
   onClick: () => void;
-  disabled: boolean;
+  disabled?: boolean;
   variant: 'primary' | 'secondary';
   size: 'large' | 'small';
 }>();
