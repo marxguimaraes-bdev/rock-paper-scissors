@@ -1,15 +1,21 @@
+import { Meta } from '@storybook/vue3';
 import Button from './Button.vue';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
-export default {
+const meta: Meta<typeof Button> = {
   title: 'Base/Button',
   component: Button,
   tags: ['autodocs'],
+  parameters: {
+    layout: 'centered',
+  },
   argTypes: {
     size: { control: { type: 'select' }, options: ['small', 'large'] },
     variant: { control: { type: 'select' }, options: ['primary', 'secondary'] },
   },
 };
+
+export default meta;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary = {
