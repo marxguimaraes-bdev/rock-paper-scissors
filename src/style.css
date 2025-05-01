@@ -7,6 +7,8 @@
   --color-blue-100: #3b4262;
   --color-blue-200: #4664f4;
   --color-blue-300: #2a45c2;
+  --color-blue-400: #1f3757;
+  --color-blue-500: #131537;
 
   /* Red */
   --color-red-100: #db2e4d;
@@ -21,4 +23,6 @@
   --color-gray-100: #babfd4;
   --color-gray-200: #dadada;
   --color-gray-300: #f3f3f3;
+  --color-gray-400: #565468;
+  --color-gray-500: #d8d8d8;
 }
