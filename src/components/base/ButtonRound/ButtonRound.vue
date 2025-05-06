@@ -4,7 +4,7 @@ import { computed } from 'vue';
 const {
   variant,
   size = 'small',
-  onClick,
+  onClick = () => {},
 } = defineProps<{
   variant: 'rock' | 'paper' | 'scissors';
   size?: 'small' | 'large';
