@@ -15,9 +15,11 @@ import MoveSelection from '../MoveSelection/MoveSelection.vue';
         name="Header"
         class="mx-8 flex h-[96px] items-center justify-between rounded-[5px] border border-gray-400 sm:mx-auto sm:h-[150px] sm:w-[700px]"
       >
-        <LogoSvg
-          class="mt-[24px] mb-[24px] ml-[23px] sm:mb-[30px] sm:ml-[32px]"
-        />
+        <div
+          class="mt-[24px] mb-[24px] ml-[23px] font-barlow text-[21px] leading-[16px] font-bold tracking-normal text-white uppercase sm:mb-[30px] sm:ml-[32px] sm:text-[40px] sm:leading-[32px]"
+        >
+          Rock<br />Paper<br />Scissors
+        </div>
         <Display
           class="mx-3 my-3 sm:mx-6 sm:my-[18px]"
           label="Score"
