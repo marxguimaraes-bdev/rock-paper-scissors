@@ -3,8 +3,9 @@ import ButtonRound from '../../base/ButtonRound/ButtonRound.vue';
 import RockSvg from '../../../assets/svg/rock.vue';
 import PaperSvg from '../../../assets/svg/paper.vue';
 import ScissorsSvg from '../../../assets/svg/scissors.vue';
+import Button from '../../base/Button/Button.vue';
 
-type Move = {
+export type Move = {
   type: 'rock' | 'paper' | 'scissors';
   winner: boolean;
 };
@@ -13,16 +14,37 @@ const { moves } = defineProps<{
   moves: Move[];
 }>();
 
+const emit = defineEmits(['play-again']);
+
 const [move1, move2] = moves;
+
+const getWinnerLabel = () => {
+  if (move1.winner) {
+    return 'You win';
+  }
+
+  if (move2.winner) {
+    return 'You lose';
+  }
+
+  return "It's a Draw";
+};
 </script>
 
 <template>
   <section
-    class="grid grid-cols-2 items-center justify-center gap-x-[50px] gap-y-[17px] text-center font-barlow text-[15px] leading-[32px] font-bold tracking-[1.88px] text-white uppercase sm:gap-x-[72.39px] sm:gap-y-[63px] sm:text-[24px] sm:tracking-[3px]"
+    class="grid grid-cols-2 items-center justify-center gap-x-[50px] gap-y-[17px] text-center font-barlow text-[15px] leading-[32px] font-bold tracking-[1.88px] text-white uppercase sm:text-[24px] sm:tracking-[3px] xl:grid-cols-3 xl:gap-x-[72.39px] xl:gap-y-[63px]"
   >
-    <div class="row-start-2 sm:row-start-1">You picked</div>
-    <div class="row-start-2 sm:row-start-1">The house picked</div>
-    <ButtonRound :variant="move1.type" size="large" @click="() => {}">
+    <div class="row-start-2 xl:col-start-1 xl:row-start-1">You picked</div>
+    <div class="row-start-2 xl:col-start-3 xl:row-start-1">
+      The house picked
+    </div>
+    <ButtonRound
+      class="justify-self-center xl:col-start-1"
+      :variant="move1.type"
+      size="large"
+      @click="() => {}"
+    >
       <RockSvg
         v-if="move1.type === 'rock'"
         class="h-[3.125rem] w-[3.125rem] place-self-center sm:h-[110px] sm:w-[110px]"
@@ -36,7 +58,12 @@ const [move1, move2] = moves;
         class="h-[3.125rem] w-[3.125rem] place-self-center sm:h-[141.87px] sm:w-[141.87px]"
       />
     </ButtonRound>
-    <ButtonRound :variant="move2.type" size="large" @click="() => {}">
+    <ButtonRound
+      class="justify-self-center xl:col-start-3"
+      :variant="move2.type"
+      size="large"
+      @click="() => {}"
+    >
       <RockSvg
         v-if="move2.type === 'rock'"
         class="h-[3.125rem] w-[3.125rem] place-self-center sm:h-[110px] sm:w-[110px]"
@@ -50,5 +77,17 @@ const [move1, move2] = moves;
         class="h-[3.125rem] w-[3.125rem] place-self-center sm:h-[141.87px] sm:w-[141.87px]"
       />
     </ButtonRound>
+    <div
+      class="col-span-2 self-center text-[56px] leading-[67px] tracking-normal xl:absolute xl:col-span-1 xl:col-start-2 xl:row-start-1 xl:mt-[160px] xl:self-start xl:justify-self-center"
+    >
+      {{ getWinnerLabel() }}
+    </div>
+    <Button
+      class="col-span-2 mr-[78px] ml-[77px] xl:col-span-1 xl:col-start-2 xl:row-start-2 xl:mb-[104px] xl:self-end"
+      label="Play again"
+      variant="primary"
+      size="large"
+      @click="() => emit('play-again')"
+    />
   </section>
 </template>

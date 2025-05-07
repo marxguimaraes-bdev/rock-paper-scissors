@@ -14,6 +14,6 @@ describe('ShowResult', () => {
       },
     });
 
-    expect(wrapper.findAll('button')).toHaveLength(2);
+    expect(wrapper.findAllComponents({ name: 'ButtonRound' })).toHaveLength(2);
   });
 });
