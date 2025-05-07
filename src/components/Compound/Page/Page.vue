@@ -2,6 +2,51 @@
 import Display from '../../base/Display/Display.vue';
 import Button from '../../base/Button/Button.vue';
 import MoveSelection from '../MoveSelection/MoveSelection.vue';
+import ShowResult, { Move } from '../ShowResult/ShowResult.vue';
+import { ref } from 'vue';
+
+const moves = ref<Move[]>([]);
+const score = ref<number>(0);
+
+const makeMove = (type: 'rock' | 'paper' | 'scissors') => {
+  const playerMove = {
+    type,
+    winner: false,
+  };
+
+  const randomizedNumber = Math.random();
+
+  const computerMove: Move = {
+    type: 'scissors',
+    winner: false,
+  };
+
+  computerMove.winner = playerMove.type === 'paper';
+  playerMove.winner = playerMove.type === 'rock';
+
+  if (randomizedNumber <= 0.33) {
+    computerMove.type = 'rock';
+    computerMove.winner = playerMove.type === 'scissors';
+    playerMove.winner = playerMove.type === 'paper';
+  }
+
+  if (randomizedNumber > 0.33 && randomizedNumber <= 0.66) {
+    computerMove.type = 'paper';
+    computerMove.winner = playerMove.type === 'rock';
+    playerMove.winner = playerMove.type === 'scissors';
+  }
+
+  if (playerMove.winner) {
+    score.value++;
+  }
+
+  moves.value.push(playerMove);
+  moves.value.push(computerMove);
+};
+
+const playAgain = () => {
+  moves.value = [];
+};
 </script>
 
 <template>
@@ -23,10 +68,16 @@ import MoveSelection from '../MoveSelection/MoveSelection.vue';
         <Display
           class="mx-3 my-3 sm:mx-6 sm:my-[18px]"
           label="Score"
-          value="0"
+          :value="score.toString()"
         />
       </section>
-      <MoveSelection class="mx-auto" />
+      <ShowResult
+        v-if="moves.length > 0"
+        @play-again="playAgain"
+        :moves="moves"
+        class="mx-auto"
+      />
+      <MoveSelection v-else @make-move="makeMove" class="mx-auto" />
       <section name="Footer" class="mx-auto w-fit self-end sm:mx-8">
         <Button
           label="Rules"

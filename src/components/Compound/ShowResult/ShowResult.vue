@@ -3,8 +3,9 @@ import ButtonRound from '../../base/ButtonRound/ButtonRound.vue';
 import RockSvg from '../../../assets/svg/rock.vue';
 import PaperSvg from '../../../assets/svg/paper.vue';
 import ScissorsSvg from '../../../assets/svg/scissors.vue';
+import Button from '../../base/Button/Button.vue';
 
-type Move = {
+export type Move = {
   type: 'rock' | 'paper' | 'scissors';
   winner: boolean;
 };
@@ -13,7 +14,15 @@ const { moves } = defineProps<{
   moves: Move[];
 }>();
 
+const emit = defineEmits(['play-again']);
+
 const [move1, move2] = moves;
+
+const winnerLabel = move1.winner
+  ? 'You win'
+  : move2.winner
+    ? 'You lose'
+    : "It's a Draw";
 </script>
 
 <template>
@@ -72,7 +81,7 @@ const [move1, move2] = moves;
       label="Play again"
       variant="primary"
       size="large"
-      @click="() => {}"
+      @click="() => emit('play-again')"
     />
   </section>
 </template>

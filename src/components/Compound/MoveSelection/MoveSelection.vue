@@ -4,6 +4,8 @@ import TriangleSvg from '../../../assets/svg/triangle.vue';
 import PaperSvg from '../../../assets/svg/paper.vue';
 import ScissorsSvg from '../../../assets/svg/scissors.vue';
 import RockSvg from '../../../assets/svg/rock.vue';
+
+const emit = defineEmits(['make-move']);
 </script>
 
 <template>
@@ -13,7 +15,7 @@ import RockSvg from '../../../assets/svg/rock.vue';
   >
     <ButtonRound
       variant="paper"
-      @click="() => {}"
+      @click="() => emit('make-move', 'paper')"
       class="z-10 justify-self-start"
     >
       <PaperSvg
@@ -22,7 +24,7 @@ import RockSvg from '../../../assets/svg/rock.vue';
     </ButtonRound>
     <ButtonRound
       variant="scissors"
-      @click="() => {}"
+      @click="() => emit('make-move', 'scissors')"
       class="z-10 justify-self-end"
     >
       <ScissorsSvg
@@ -31,7 +33,7 @@ import RockSvg from '../../../assets/svg/rock.vue';
     </ButtonRound>
     <ButtonRound
       variant="rock"
-      @click="() => {}"
+      @click="() => emit('make-move', 'rock')"
       class="z-10 col-span-2 justify-self-center"
     >
       <RockSvg
