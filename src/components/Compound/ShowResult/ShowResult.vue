@@ -18,11 +18,17 @@ const emit = defineEmits(['play-again']);
 
 const [move1, move2] = moves;
 
-const winnerLabel = move1.winner
-  ? 'You win'
-  : move2.winner
-    ? 'You lose'
-    : "It's a Draw";
+const getWinnerLabel = () => {
+  if (move1.winner) {
+    return 'You win';
+  }
+
+  if (move2.winner) {
+    return 'You lose';
+  }
+
+  return "It's a Draw";
+};
 </script>
 
 <template>
@@ -74,7 +80,7 @@ const winnerLabel = move1.winner
     <div
       class="col-span-2 self-center text-[56px] leading-[67px] tracking-normal xl:absolute xl:col-span-1 xl:col-start-2 xl:row-start-1 xl:mt-[160px] xl:self-start xl:justify-self-center"
     >
-      {{ winnerLabel }}
+      {{ getWinnerLabel() }}
     </div>
     <Button
       class="col-span-2 mr-[78px] ml-[77px] xl:col-span-1 xl:col-start-2 xl:row-start-2 xl:mb-[104px] xl:self-end"
