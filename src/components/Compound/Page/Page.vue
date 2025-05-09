@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import Display from '../../base/Display/Display.vue';
 import Button from '../../base/Button/Button.vue';
+import Modal from '../../base/Modal/Modal.vue';
 import MoveSelection from '../MoveSelection/MoveSelection.vue';
 import ShowResult, { Move } from '../ShowResult/ShowResult.vue';
+import RulesSvg from '../../../assets/svg/rules.vue';
 import { ref } from 'vue';
 
 const moves = ref<Move[]>([]);
 const score = ref<number>(0);
+const isModalVisible = ref(false);
 
 const makeMove = (type: 'rock' | 'paper' | 'scissors') => {
   const playerMove = {
@@ -42,6 +45,10 @@ const makeMove = (type: 'rock' | 'paper' | 'scissors') => {
 
   moves.value.push(playerMove);
   moves.value.push(computerMove);
+};
+
+const toggleModalVisibility = () => {
+  isModalVisible.value = !isModalVisible.value;
 };
 
 const playAgain = () => {
@@ -83,10 +90,17 @@ const playAgain = () => {
           label="Rules"
           variant="secondary"
           size="small"
-          @click="() => {}"
+          @click="toggleModalVisibility"
         />
       </section>
     </main>
+    <Modal :visible="isModalVisible" @toggle="toggleModalVisibility">
+      <span
+        class="mt-[95px] justify-self-center font-barlow text-[32px] leading-8 font-bold tracking-normal text-blue-100 uppercase sm:mt-8 sm:ml-8 sm:justify-self-start"
+        >Rules</span
+      >
+      <RulesSvg class="mx-auto self-center sm:mb-8 sm:self-end" />
+    </Modal>
   </div>
 </template>
 

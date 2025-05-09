@@ -25,4 +25,6 @@
   --color-gray-300: #f3f3f3;
   --color-gray-400: #565468;
   --color-gray-500: #d8d8d8;
+
+  --color-transparent-black: rgba(0, 0, 0, 0.2);
 }
