@@ -19,7 +19,7 @@ const emit = defineEmits(['toggle']);
       <slot />
       <button
         class="mb-[66px] self-end justify-self-center hover:cursor-pointer sm:absolute sm:mt-[38px] sm:mr-[32px] sm:self-start sm:justify-self-end"
-        @click="() => emit('toggle')"
+        @click="emit('toggle')"
       >
         <CloseIcon />
       </button>
