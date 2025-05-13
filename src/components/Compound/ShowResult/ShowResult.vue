@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue';
 import ButtonRound from '../../base/ButtonRound/ButtonRound.vue';
 import RockSvg from '../../../assets/svg/rock.vue';
 import PaperSvg from '../../../assets/svg/paper.vue';
@@ -29,22 +30,54 @@ const getWinnerLabel = () => {
 
   return "It's a Draw";
 };
+
+const animate = ref(false);
+onMounted(() => {
+  setTimeout(() => {
+    animate.value = true;
+  }, 500); // slight delay for transition
+});
 </script>
 
 <template>
   <section
     class="grid grid-cols-2 items-center justify-center gap-x-[50px] gap-y-[17px] text-center font-barlow text-[15px] leading-[32px] font-bold tracking-[1.88px] text-white uppercase sm:text-[24px] sm:tracking-[3px] xl:grid-cols-3 xl:gap-x-[72.39px] xl:gap-y-[63px]"
   >
-    <div class="row-start-2 xl:col-start-1 xl:row-start-1">You picked</div>
-    <div class="row-start-2 xl:col-start-3 xl:row-start-1">
+    <div
+      :class="[
+        'row-start-2 transition-transform duration-400 xl:col-start-1 xl:row-start-1',
+        animate ? 'slide-to-position' : 'start-center-right',
+      ]"
+    >
+      You picked
+    </div>
+    <div
+      :class="[
+        'row-start-2 transition-transform duration-400 xl:col-start-3 xl:row-start-1',
+        animate ? 'slide-to-position' : 'start-center-left',
+      ]"
+    >
       The house picked
     </div>
     <ButtonRound
-      class="justify-self-center xl:col-start-1"
+      :class="[
+        'justify-self-center transition-transform duration-400 xl:col-start-1',
+        animate ? 'slide-to-position' : 'start-center-right',
+      ]"
       :variant="move1.type"
       size="large"
       @click="() => {}"
     >
+      <span
+        v-if="move1.winner"
+        v-for="ripple in 4"
+        :key="ripple"
+        :style="{ animationDelay: `${(ripple - 1) * 750}ms` }"
+        :class="[
+          'absolute h-[8.3125rem] w-[8.125rem] place-self-center rounded-full bg-white opacity-5 sm:h-[18.75rem] sm:w-[18.2881rem]',
+          animate ? 'ripple' : '',
+        ]"
+      />
       <RockSvg
         v-if="move1.type === 'rock'"
         class="h-[3.125rem] w-[3.125rem] place-self-center sm:h-[110px] sm:w-[110px]"
@@ -59,11 +92,26 @@ const getWinnerLabel = () => {
       />
     </ButtonRound>
     <ButtonRound
-      class="justify-self-center xl:col-start-3"
+      :class="[
+        'justify-self-center transition-all duration-400 xl:col-start-3',
+        animate
+          ? 'slide-to-position opacity-100'
+          : 'start-center-left opacity-0',
+      ]"
       :variant="move2.type"
       size="large"
       @click="() => {}"
     >
+      <span
+        v-if="move2.winner"
+        v-for="ripple in 4"
+        :key="ripple"
+        :style="{ animationDelay: `${(ripple - 1) * 750}ms` }"
+        :class="[
+          'absolute h-[8.3125rem] w-[8.125rem] place-self-center rounded-full bg-white opacity-5 sm:h-[18.75rem] sm:w-[18.2881rem]',
+          animate ? 'ripple' : '',
+        ]"
+      />
       <RockSvg
         v-if="move2.type === 'rock'"
         class="h-[3.125rem] w-[3.125rem] place-self-center sm:h-[110px] sm:w-[110px]"
@@ -78,12 +126,18 @@ const getWinnerLabel = () => {
       />
     </ButtonRound>
     <div
-      class="col-span-2 self-center text-[56px] leading-[67px] tracking-normal xl:absolute xl:col-span-1 xl:col-start-2 xl:row-start-1 xl:mt-[160px] xl:self-start xl:justify-self-center"
+      :class="[
+        'col-span-2 self-center text-[56px] leading-[67px] tracking-normal transition-opacity duration-1000 xl:absolute xl:col-span-1 xl:col-start-2 xl:row-start-1 xl:mt-[160px] xl:self-start xl:justify-self-center',
+        animate ? 'opacity-100' : 'opacity-0',
+      ]"
     >
       {{ getWinnerLabel() }}
     </div>
     <Button
-      class="col-span-2 mr-[78px] ml-[77px] xl:col-span-1 xl:col-start-2 xl:row-start-2 xl:mb-[104px] xl:self-end"
+      :class="[
+        'z-10 col-span-2 mr-[78px] ml-[77px] transition-opacity duration-1000 sm:mr-0 sm:ml-0 xl:col-span-1 xl:col-start-2 xl:row-start-2 xl:mb-[104px] xl:self-end',
+        animate ? 'opacity-100' : 'opacity-0',
+      ]"
       label="Play again"
       variant="primary"
       size="large"
@@ -91,3 +145,35 @@ const getWinnerLabel = () => {
     />
   </section>
 </template>
+
+<style scoped>
+@media (min-width: 1024px) {
+  .start-center-left {
+    transform: translateX(-136px);
+  }
+  .start-center-right {
+    transform: translateX(144px);
+  }
+  .slide-to-position {
+    transform: none;
+  }
+}
+.opacity-0 {
+  opacity: 0;
+}
+.opacity-100 {
+  opacity: 1;
+}
+
+.ripple {
+  animation: ripple 3s linear infinite;
+}
+
+@keyframes ripple {
+  75%,
+  100% {
+    transform: scale(2.3);
+    opacity: 0;
+  }
+}
+</style>

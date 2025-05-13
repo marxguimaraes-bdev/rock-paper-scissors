@@ -40,7 +40,9 @@ const makeMove = (type: 'rock' | 'paper' | 'scissors') => {
   }
 
   if (playerMove.winner) {
-    score.value++;
+    setTimeout(() => {
+      score.value++;
+    }, 1000);
   }
 
   moves.value.push(playerMove);
@@ -78,13 +80,15 @@ const playAgain = () => {
           :value="score.toString()"
         />
       </section>
-      <ShowResult
-        v-if="moves.length > 0"
-        @play-again="playAgain"
-        :moves="moves"
-        class="mx-auto"
-      />
-      <MoveSelection v-else @make-move="makeMove" class="mx-auto" />
+      <Transition name="fade" mode="out-in">
+        <ShowResult
+          v-if="moves.length > 0"
+          @play-again="playAgain"
+          :moves="moves"
+          class="mx-auto"
+        />
+        <MoveSelection v-else @make-move="makeMove" class="mx-auto" />
+      </Transition>
       <section name="Footer" class="mx-auto w-fit self-end sm:mx-8">
         <Button
           label="Rules"
@@ -104,4 +108,14 @@ const playAgain = () => {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 150ms ease-out;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
