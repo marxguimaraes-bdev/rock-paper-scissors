@@ -32,9 +32,14 @@ const getWinnerLabel = () => {
 };
 
 const animate = ref(false);
+const animateRipple = ref(false);
 onMounted(() => {
   setTimeout(() => {
     animate.value = true;
+
+    setTimeout(() => {
+      animateRipple.value = true;
+    }, 1000);
   }, 500); // slight delay for transition
 });
 </script>
@@ -61,23 +66,13 @@ onMounted(() => {
     </div>
     <ButtonRound
       :class="[
-        'justify-self-center transition-transform duration-400 xl:col-start-1',
+        'z-10 self-start justify-self-center transition-transform duration-400 xl:col-start-1',
         animate ? 'slide-to-position' : 'start-center-right',
       ]"
       :variant="move1.type"
       size="large"
       @click="() => {}"
     >
-      <span
-        v-if="move1.winner"
-        v-for="ripple in 4"
-        :key="ripple"
-        :style="{ animationDelay: `${(ripple - 1) * 750}ms` }"
-        :class="[
-          'absolute h-[8.3125rem] w-[8.125rem] place-self-center rounded-full bg-white opacity-5 sm:h-[18.75rem] sm:w-[18.2881rem]',
-          animate ? 'ripple' : '',
-        ]"
-      />
       <RockSvg
         v-if="move1.type === 'rock'"
         class="h-[3.125rem] w-[3.125rem] place-self-center sm:h-[110px] sm:w-[110px]"
@@ -93,11 +88,14 @@ onMounted(() => {
     </ButtonRound>
     <div
       v-if="!animate"
-      class="h-[110px] w-[110px] justify-self-center rounded-full bg-[rgba(0,0,0,0.1)] sm:-ml-[136px] sm:h-[225px] sm:w-[225px]"
+      :class="[
+        'absolute mt-[15px] mr-[17.5px] h-[110px] w-[110px] self-start justify-self-end rounded-full bg-[rgba(0,0,0,0.1)]',
+        'sm:mt-[40px] sm:mr-[40px] sm:h-[225px] sm:w-[225px] lg:mb-[40px] xl:mr-[176px] xl:self-end',
+      ]"
     />
     <ButtonRound
       :class="[
-        'justify-self-center transition-all duration-400 xl:col-start-3',
+        'z-10 self-start justify-self-center transition-all duration-400 xl:col-start-3',
         animate
           ? 'slide-to-position opacity-100'
           : 'start-center-left opacity-0',
@@ -106,16 +104,6 @@ onMounted(() => {
       size="large"
       @click="() => {}"
     >
-      <span
-        v-if="move2.winner"
-        v-for="ripple in 4"
-        :key="ripple"
-        :style="{ animationDelay: `${(ripple - 1) * 750}ms` }"
-        :class="[
-          'absolute h-[8.3125rem] w-[8.125rem] place-self-center rounded-full bg-white opacity-5 sm:h-[18.75rem] sm:w-[18.2881rem]',
-          animate ? 'ripple' : '',
-        ]"
-      />
       <RockSvg
         v-if="move2.type === 'rock'"
         class="h-[3.125rem] w-[3.125rem] place-self-center sm:h-[110px] sm:w-[110px]"
@@ -147,11 +135,22 @@ onMounted(() => {
       size="large"
       @click="() => emit('play-again')"
     />
+    <span
+      v-if="animateRipple && (move1.winner || move2.winner)"
+      v-for="ripple in 4"
+      :key="ripple"
+      :style="{ animationDelay: `${(ripple - 1) * 750}ms` }"
+      :class="[
+        'ripple absolute z-0 h-[8.3125rem] w-[8.125rem] self-start rounded-full bg-white opacity-5 sm:h-[18.75rem] sm:w-[18.2881rem] xl:mt-[95px] xl:self-center',
+        move1.winner ? 'ml-[7px] justify-self-start sm:ml-0' : '',
+        move2.winner ? 'mr-[7px] justify-self-end sm:mr-0' : '',
+      ]"
+    />
   </section>
 </template>
 
 <style scoped>
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .start-center-left {
     transform: translateX(-136px);
   }
