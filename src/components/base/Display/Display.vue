@@ -14,12 +14,30 @@ const props = defineProps<{
     >
       {{ label }}
     </div>
-    <div
-      class="display__value font-barlow text-[2.5rem] leading-[2.5rem] font-bold tracking-normal text-gray-400 sm:text-[4rem] sm:leading-[4rem]"
-    >
-      {{ value }}
-    </div>
+    <Transition name="slide-up" mode="out-in">
+      <span
+        :key="value"
+        class="display__value font-barlow text-[2.5rem] leading-[2.5rem] font-bold tracking-normal text-gray-400 sm:text-[4rem] sm:leading-[4rem]"
+      >
+        {{ value }}
+      </span>
+    </Transition>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: all 100ms ease-out;
+}
+
+.slide-up-enter-from {
+  opacity: 0;
+  transform: translateY(50%);
+}
+
+.slide-up-leave-to {
+  opacity: 0;
+  transform: translateY(-50%);
+}
+</style>
