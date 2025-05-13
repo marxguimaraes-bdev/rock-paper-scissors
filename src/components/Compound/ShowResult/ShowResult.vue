@@ -91,6 +91,10 @@ onMounted(() => {
         class="h-[3.125rem] w-[3.125rem] place-self-center sm:h-[141.87px] sm:w-[141.87px]"
       />
     </ButtonRound>
+    <div
+      v-if="!animate"
+      class="h-[110px] w-[110px] justify-self-center rounded-full bg-[rgba(0,0,0,0.1)] sm:-ml-[136px] sm:h-[225px] sm:w-[225px]"
+    />
     <ButtonRound
       :class="[
         'justify-self-center transition-all duration-400 xl:col-start-3',
@@ -127,7 +131,7 @@ onMounted(() => {
     </ButtonRound>
     <div
       :class="[
-        'col-span-2 self-center text-[56px] leading-[67px] tracking-normal transition-opacity duration-1000 xl:absolute xl:col-span-1 xl:col-start-2 xl:row-start-1 xl:mt-[160px] xl:self-start xl:justify-self-center',
+        'col-span-2 self-end text-[56px] leading-[67px] tracking-normal transition-opacity duration-1000 xl:absolute xl:col-span-1 xl:col-start-2 xl:row-start-1 xl:mt-[160px] xl:self-start xl:justify-self-center',
         animate ? 'opacity-100' : 'opacity-0',
       ]"
     >
@@ -135,7 +139,7 @@ onMounted(() => {
     </div>
     <Button
       :class="[
-        'z-10 col-span-2 mr-[78px] ml-[77px] transition-opacity duration-1000 sm:mr-0 sm:ml-0 xl:col-span-1 xl:col-start-2 xl:row-start-2 xl:mb-[104px] xl:self-end',
+        'z-10 col-span-2 mr-auto ml-auto self-start transition-opacity duration-1000 sm:mr-0 sm:ml-0 xl:col-span-1 xl:col-start-2 xl:row-start-2 xl:mb-[104px] xl:self-end',
         animate ? 'opacity-100' : 'opacity-0',
       ]"
       label="Play again"

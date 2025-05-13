@@ -85,7 +85,7 @@ const playAgain = () => {
           v-if="moves.length > 0"
           @play-again="playAgain"
           :moves="moves"
-          class="mx-auto"
+          class="mx-auto mt-[99px] grow pb-[52px] sm:mt-0 sm:grow-0 sm:pb-0"
         />
         <MoveSelection v-else @make-move="makeMove" class="mx-auto" />
       </Transition>
