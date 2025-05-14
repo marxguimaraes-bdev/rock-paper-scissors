@@ -127,7 +127,7 @@ onMounted(() => {
     </div>
     <Button
       :class="[
-        'z-10 col-span-2 mr-auto ml-auto self-start transition-opacity duration-1000 sm:mr-0 sm:ml-0 xl:col-span-1 xl:col-start-2 xl:row-start-2 xl:mb-[104px] xl:self-end',
+        'z-10 col-span-2 mr-auto ml-auto self-start transition-opacity duration-1000 xl:col-span-1 xl:col-start-2 xl:row-start-2 xl:mr-0 xl:mb-[104px] xl:ml-0 xl:self-end',
         animate ? 'opacity-100' : 'opacity-0',
       ]"
       label="Play again"
