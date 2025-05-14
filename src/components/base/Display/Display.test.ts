@@ -4,8 +4,8 @@ import { describe, it, expect } from 'vitest';
 import Display from './Display.vue';
 
 describe('Display', () => {
-  it('renders the label and value', () => {
-    const wrapper = mount(Display, {
+  it('renders the label and value', async () => {
+    const wrapper = await mount(Display, {
       props: {
         label: 'Score',
         value: '1',
