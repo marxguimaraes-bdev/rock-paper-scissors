@@ -33,14 +33,26 @@ const getWinnerLabel = () => {
 
 const animate = ref(false);
 const animateRipple = ref(false);
+let animationTimeout: ReturnType<typeof setTimeout> | null = null;
+let rippleTimeout: ReturnType<typeof setTimeout> | null = null;
+
 onMounted(() => {
-  setTimeout(() => {
+  animationTimeout = setTimeout(() => {
     animate.value = true;
 
-    setTimeout(() => {
+    rippleTimeout = setTimeout(() => {
       animateRipple.value = true;
     }, 1000);
   }, 500); // slight delay for transition
+});
+
+onUnmounted(() => {
+  if (animationTimeout) {
+    clearTimeout(animationTimeout);
+  }
+  if (rippleTimeout) {
+    clearTimeout(rippleTimeout);
+  }
 });
 </script>
 
