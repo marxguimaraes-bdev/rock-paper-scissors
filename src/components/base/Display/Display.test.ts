@@ -11,7 +11,11 @@ describe('Display', () => {
         value: '1',
       },
     });
-    expect(wrapper.find('div.display__label').text()).toBe('Score');
-    expect(wrapper.find('div.display__value').text()).toBe('1');
+
+    const label = wrapper.find('div.display__label');
+    const value = wrapper.find('span.display__value');
+
+    expect(label.text()).toBe('Score');
+    expect(value.text()).toBe('1');
   });
 });
