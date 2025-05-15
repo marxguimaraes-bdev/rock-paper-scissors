@@ -16,4 +16,21 @@ describe('ShowResult', () => {
 
     expect(wrapper.findAllComponents({ name: 'ButtonRound' })).toHaveLength(2);
   });
+
+  it('emits play-again when play again button is clicked', () => {
+    const wrapper = mount(ShowResult, {
+      props: {
+        moves: [
+          { type: 'scissors', winner: false },
+          { type: 'rock', winner: true },
+        ],
+      },
+    });
+
+    const playAgainButton = wrapper
+      .findComponent({ name: 'Button' })
+      .trigger('click');
+
+    expect(wrapper.emitted()['play-again']).toBeTruthy();
+  });
 });
