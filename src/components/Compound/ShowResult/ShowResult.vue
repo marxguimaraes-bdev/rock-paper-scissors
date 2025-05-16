@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import ButtonRound from '../../base/ButtonRound/ButtonRound.vue';
 import RockSvg from '../../../assets/svg/rock.vue';
 import PaperSvg from '../../../assets/svg/paper.vue';
