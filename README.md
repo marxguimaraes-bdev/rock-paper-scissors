@@ -32,15 +32,15 @@ Users should be able to:
 ### Screenshot
 
 <p style="display: grid; grid-template-columns: 200px 400px; grid-gap: 10px">
-  <img src='public/screenshots/mobile.png' alt='Desktop screenshot' height=400>
-  <img src='public/screenshots/tablet.png' alt='Desktop screenshot' height=400>
-  <img src='public/screenshots/desktop.png' alt='Desktop screenshot' width=510 style="grid-area: 2 / 1 / span 1 / span 2">
+  <img src='public/screenshots/mobile.png' alt='Mobile screenshot of game UI' height=400>
+  <img src='public/screenshots/tablet.png' alt='Tablet screenshot of game UI' height=400>
+  <img src='public/screenshots/desktop.png' alt='Desktop screenshot of game UI' width=510 style="grid-area: 2 / 1 / span 1 / span 2">
 </p>
 
 ### Links
 
-- Solution URL: [Frontend Mentor](https://www.frontendmentor.io/solutions/responsive-developer-portfolio-3fx7bhvfAF)
-- Live Site URL: [Vercel](https://single-page-developer-portfolio-mocha-kappa.vercel.app/)
+- Solution URL: [Frontend Mentor](https://www.frontendmentor.io/solutions/rock-paper-scissors-game-using-vue-3-2uBzdoF7H-)
+- Live Site URL: [Netlify](https://rock-paper-scissors-dream.netlify.app/)
 
 ## My process
 
@@ -51,8 +51,8 @@ Users should be able to:
 - CSS Grid
 - Mobile-first workflow
 - [Vue 3](https://vuejs.org/) - JS library
-- [Vite](https://vite.dev/) - React framework
-- [TailwindCSS 4](tailwindcss.com/) - Tailwind CSS Library
+- [Vite](https://vite.dev/) - Frontend build tool
+- [TailwindCSS 4](https://tailwindcss.com/) - Tailwind CSS Library
 - [Storybook](https://storybook.js.org/) - Storybook
 
 ### What I learned
@@ -61,7 +61,7 @@ This is my first project using Vue. I'm pretty happy with how it turned out, jus
 
 The project also gave me a chance to try out the new Tailwind 4.
 
-As a bonus, I tried to implement animations into the project, which was a little challeging. Thankfully I figured out that Vue supports animations in its lifecycles hooks which made it a lot easier to do the animations I wanted.
+As a bonus, I tried to implement animations into the project, which was a little challenging. Thankfully I figured out that Vue supports animations in its lifecycles hooks which made it a lot easier to do the animations I wanted.
 
 ### Continued development
 
